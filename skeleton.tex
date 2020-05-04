@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[makeroom]{cancel}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{multicol}
+%\usepackage{tikz}
+%\usepackage{pgfplots}
+
+%\usepgfplotslibrary{external}
+%\pgfplotsset{compat=1.16}
+
+\pagestyle{fancy}
+
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{string}{HTML}{7FC400}
+\definecolor{editorRed}{HTML}{F92672} % #FF7F00 -> rgb(239, 169, 0)
+\definecolor{editorGreen}{rgb}{0, 0.5, 0} % #007C00 -> rgb(0, 124, 0)
+
+\input{lst-envs/c.tex}
+
+\lstset{%
+  % General design
+  backgroundcolor=\color{editorGray},
+  basicstyle=\footnotesize\ttfamily,
+  frame=L,
+  % line-numbers
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  % Code design
+  keywordstyle=\color{blue},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{purple},
+  ndkeywordstyle=\color{editorRed}\bfseries,
+  stringstyle=\color{string}\ttfamily,
+  % German umlauts
+  %style=customc
+  literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1 
+}
+\newcommand*{\QEDB}{\hfill\ensuremath{\square}}
+
+\newcommand{\RN}[1]{%
+  \textup{\uppercase\expandafter{\romannumeral#1}}%
+}
+
+\input{header.tex}
+
+
+
+\makeatletter
+\let\runauthor\@author
+\makeatother
+\rhead{\runauthor}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+    \input{current.tex}
+\end{document}
