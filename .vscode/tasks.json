@@ -1,0 +1,61 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Ex-Sheet",
+            "type": "shell",
+            "command": "latexmk -jobname=abgabe -pdf skeleton.tex",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "windows": {
+                "command": "pdflatex abgabe.tex && pdflatex abgabe.tex && pdflatex abgabe.tex"
+            }
+        },
+        {
+            "label": "Build Ex-Sheet with Cusom Name",
+            "type": "shell",
+            "command": "latexmk -jobname=${input:getOutputName} -pdf skeleton.tex",
+            "group": "build",
+            "windows": {
+                "command": "pdflatex abgabe.tex && pdflatex abgabe.tex && pdflatex abgabe.tex"
+            },
+            "dependsOn": [
+                "Set current file"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Set current file",
+            "type": "shell",
+            "command": "ln -sfv ${input:pickCurrentFile} current.tex"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "getOutputName",
+            "type": "promptString",
+            "default": "abgabe",
+            "description": "Name for the Produced PDF",
+        },
+        {
+            "id": "pickCurrentFile",
+            "type": "command",
+            "command": "filePicker.pick",
+            "args": {
+                "masks": "pages/*",
+                "display": {
+                    "type": "fileName",
+                    "detail": "fileRelativePath",
+                    "description": {
+                        "type": "dirName",
+                    }
+                },
+                "output": "filePath"
+            }
+        }
+    ],
+}
