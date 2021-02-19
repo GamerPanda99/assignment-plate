@@ -16,9 +16,22 @@
             }
         },
         {
-            "label": "Build Ex-Sheet with Cusom Name",
+            "label": "Build Ex-Sheet with new current and custom name",
             "type": "shell",
             "command": "latexmk -jobname=${input:getOutputName} -pdf skeleton.tex",
+            "group": "build",
+            "windows": {
+                "command": "pdflatex abgabe.tex && pdflatex abgabe.tex && pdflatex abgabe.tex"
+            },
+            "dependsOn": [
+                "Set current file"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Ex-Sheet with new current",
+            "type": "shell",
+            "command": "latexmk -jobname=abgabe -pdf skeleton.tex",
             "group": "build",
             "windows": {
                 "command": "pdflatex abgabe.tex && pdflatex abgabe.tex && pdflatex abgabe.tex"
