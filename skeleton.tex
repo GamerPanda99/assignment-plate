@@ -15,7 +15,10 @@
 \usepackage{bm} %%um Vektoren fett darzustellen (anstelle von pfeilen) 
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{subcaption}
-\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{pdfpages}
+%\usepackage{hyperref}
 %\usepackage{tikz}
 %\usepackage{pgfplots}
 
@@ -23,6 +26,11 @@
 %\pgfplotsset{compat=1.16}
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+
+%find overfull h-boxes
+\overfullrule=2cm
 
 \pagestyle{fancy}
 
@@ -64,6 +72,11 @@
   {ö}{{\"o}}1 
 }
 \newcommand*{\QEDB}{\hfill\ensuremath{\square}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
 
 \newcommand{\RN}[1]{%
   \textup{\uppercase\expandafter{\romannumeral#1}}%
@@ -74,11 +87,12 @@
 
 
 \makeatletter
-\let\runauthor\@author
+\let\runauthor\@author{}
 \makeatother
 \rhead{\runauthor}
 
 \begin{document}
+    \microtypesetup{activate={true,nocompatibility}}
     \maketitle
     \tableofcontents
     \newpage
